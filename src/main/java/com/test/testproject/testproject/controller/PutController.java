@@ -24,16 +24,18 @@ public class PutController {
     // key와 value가 정해져 있지만 받아야할 파라미터가 많을 경우 DTO객체를 사용
     @PutMapping(value = "/member1")
     public String putMemberDto1(@RequestBody MemberDTO memberDTO){
-        return memberDTO.toString();
+        return memberDTO.toString(); // return type: string
     }
 
     @PutMapping(value = "/member2")
     public MemberDTO postMemberDto2(@RequestBody MemberDTO memberDTO){
-        return memberDTO;
+        return memberDTO; // return type : json
     }
     @PutMapping(value = "/member3")
     public ResponseEntity<MemberDTO> postMemberDto3(@RequestBody MemberDTO memberDTO){
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(memberDTO);
+        // accepted : status 202
+        // status 값을 지정 가능 / body return type : json
     }
 }
 
