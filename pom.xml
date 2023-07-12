@@ -4,38 +4,81 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
+        <artifactId>spring-boot-starter-parent</artifactId> <!--spring-boot-starter-parent : 프로젝트에서 사용하는 다양한 라이브러리 간의 버전 충돌 문제가 발생 할 수 있는 것을 방지 / 의존성 조합간 충돌 문제가 없는 검증된 버전 정보 조합 제공-->
         <version>3.1.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.test.testproject</groupId>
     <artifactId>testProject</artifactId>
     <version>0.0.1</version>
-    <name>testProject</name>
-    <description>testProject</description>
+    <name>testProject</name> <!--name : 프로젝트 명--> <!--url : 프로젝트 사이트 url-->
+    <description>testProject</description> <!--description : 프로젝트에 대한 간단한 설명--> <!--organization : 프로젝트를 관리하는 단체 설명-->
     <properties>
         <java.version>17</java.version>
     </properties>
-    <dependencies>
+    <dependencies> <!--dependency : 라이브러리 의존성 정보를 가지고 있는 dependency 태그를 묶은 태그-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <groupId>org.springframework.boot</groupId> <!--groupId : 프로젝트의 그룹 id 설정-->
+            <artifactId>spring-boot-starter-data-jpa</artifactId> <!--artifactId : 프로젝트 아티팩트 ID 설정--> <!--version : 프로젝트의 버전--> <!--packing : 패키징 타입 설정 (jar, war)-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId> <!--spring-boot-starter-web : Spring MVC를 이용한 rest 서비스를 개발하는데 사용-->
+            <exclusions>
+                <exclusion>
+                    <artifactId>snakeyaml</artifactId>
+                    <groupId>org.yaml</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+        <dependency> <!--dependency : 각 라이브러리의 정보를 담은 태그-->
+            <groupId>org.springframework.boot</groupId> <!--groupId : 의존성 라이브러리의 groupID-->
+            <artifactId>spring-boot-starter-test</artifactId> <!--artifactId : 의존성 라이브러리의 아티팩트ID--> <!--version : 의존성 라이브러리의 버전--> <!--spring-boot-starter-test : JUnit, Hamcrest, Hockito를 포함한 스프링 어플리케이션의 테스트 기능을 제공-->
+            <!--optional : 다른 프로젝트에서 이 프로젝트를 의존성 설정 할 경우 사용할 지 결정-->
             <scope>test</scope>
+            <!--scope : 해당 라이브러리의 이용 범위를 지정
+                    - compile (default) : 모든 클래스 경로에서 사용 가능 / 컴파일 및 배포 상황에서 같이 제공
+                    - provided : compile과 유사하지 만 JDK 혹은 Container 가 런타임 시에만 제공
+                                컴파일 혹은 테스트 경로에서만 사용, 배포시에는 빠짐
+                    - runtime : 컴파일 시에는 사용하지 않고 실행 상황에서만 사용 / 런타임과 테스트 경로에서는 있지만 컴파일 클래스 경로에는 존재하지 않음
+                    - test : 테스트 상황에서만 사용되는 라이브러리 / 실 가동 상황에서는 필요 없는 라이브러리를 사용할 경우에 설정 / 종속된 다른 프로젝트에는 영향을 미치지 않음
+                    - system : provide와 유사하지만 저장소에서 관리되지 않고 직접 관리하는 JAR를 추가 / systemPath를 추가해서 작성해야 함 -->
         </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
+        <!--        <dependency>-->
+<!--            <groupId>org.springdoc</groupId>-->
+<!--            <artifactId>springdoc-openapi-ui</artifactId>-->
+<!--            <version>1.6.9</version>-->
+<!--        </dependency>-->
+        <!--        <dependency>-->
+<!--            <groupId>org.springdoc</groupId>-->
+<!--            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>-->
+<!--            <version>2.0.2</version>-->
+<!--        </dependency>-->
+
+<!--swagger old version-->
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger2</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>io.springfox</groupId>-->
+<!--            <artifactId>springfox-swagger-ui</artifactId>-->
+<!--            <version>3.0.0</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
@@ -56,3 +99,4 @@
     </build>
 
 </project>
+
