@@ -1,11 +1,13 @@
 package com.test.testproject.testproject.data.entity;
 
 import com.test.testproject.testproject.data.dto.ProductDto;
-import jakarta.persistence.Column;
+//import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor

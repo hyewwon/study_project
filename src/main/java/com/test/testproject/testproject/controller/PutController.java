@@ -39,7 +39,6 @@ public class PutController {
     }
 }
 
-
 /*
 ResponseEntity
     Spring에서 제공하는 클래스 중 HttpEntity라는 클래스를 상속받아 사용하는 클래스

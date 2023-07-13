@@ -22,6 +22,11 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId> <!--artifactId : 프로젝트 아티팩트 ID 설정--> <!--version : 프로젝트의 버전--> <!--packing : 패키징 타입 설정 (jar, war)-->
         </dependency>
         <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>2.7.4</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId> <!--spring-boot-starter-web : Spring MVC를 이용한 rest 서비스를 개발하는데 사용-->
             <exclusions>
