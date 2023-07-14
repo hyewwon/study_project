@@ -30,4 +30,11 @@ public class ProductServiceImpl implements ProductService {
 
         return productDto;
     }
+
+    @Override
+    public ProductDto editProduct(String productId, String productName, int productPrice, int productStock) {
+        return null;
+    }
+
+
 }

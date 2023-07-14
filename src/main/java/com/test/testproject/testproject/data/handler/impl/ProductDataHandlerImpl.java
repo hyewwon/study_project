@@ -3,10 +3,12 @@ package com.test.testproject.testproject.data.handler.impl;
 import com.test.testproject.testproject.data.dao.ProductDAO;
 import com.test.testproject.testproject.data.entity.ProductEntity;
 import com.test.testproject.testproject.data.handler.ProductDataHandler;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class ProductDataHandlerImpl implements ProductDataHandler {
     ProductDAO productDAO;
 
