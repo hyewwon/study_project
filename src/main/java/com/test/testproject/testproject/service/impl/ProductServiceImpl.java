@@ -33,7 +33,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDto editProduct(String productId, String productName, int productPrice, int productStock) {
-        return null;
+        ProductEntity productEntity =  productDataHandler.getProductEntity(productId);
+        ProductDto productDto =  new ProductDto(productEntity.getProductId(), productEntity.getProductName(), productEntity.getProductPrice(), productEntity.getProductStock());
+        return productDto;
     }
 
 

@@ -6,4 +6,6 @@ public interface ProductDAO {
     ProductEntity saveProduct(ProductEntity productEntity);
 
     ProductEntity getProduct(String productId);
+
+    ProductEntity updateProduct(ProductEntity productEntity);
 }

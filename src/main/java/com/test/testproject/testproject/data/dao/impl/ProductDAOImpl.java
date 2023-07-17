@@ -26,4 +26,14 @@ public class ProductDAOImpl implements ProductDAO {
         ProductEntity productEntity = productRepository.getReferenceById(productId); // id를 기반으로 가져오는 메소드
         return productEntity;
     }
+    @Override
+    public ProductEntity updateProduct(ProductEntity productEntity) {
+        ProductEntity product = productRepository.getReferenceById(productEntity.getProductId());
+        product.setProductName(productEntity.getProductName());
+        product.setProductPrice(productEntity.getProductPrice());
+        product.setProductStock(productEntity.getProductStock());
+
+        return product;
+    }
+
 }

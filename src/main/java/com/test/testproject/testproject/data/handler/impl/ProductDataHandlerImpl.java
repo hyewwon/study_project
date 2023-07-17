@@ -26,4 +26,12 @@ public class ProductDataHandlerImpl implements ProductDataHandler {
     public ProductEntity getProductEntity(String productId) {
         return productDAO.getProduct(productId);
     }
+
+    @Override
+    public ProductEntity updateProductEntity(String productId, String productName, int productPrice, int productStock) {
+        ProductEntity productEntity  = new ProductEntity(productId, productName, productPrice, productStock);
+        return productDAO.updateProduct(productEntity);
+    }
+
+
 }
