@@ -32,7 +32,7 @@ public class ProductDAOImpl implements ProductDAO {
         product.setProductName(productEntity.getProductName());
         product.setProductPrice(productEntity.getProductPrice());
         product.setProductStock(productEntity.getProductStock());
-
+        productRepository.save(product);
         return product;
     }
 

@@ -12,7 +12,6 @@ public class TestProjectApplication {
 
 }
 
-
 /*
 rest api?
 REST 아키텍처의 조건을 준수하는 어플리케이션 프로그래밍 인터페이스를 뜻함

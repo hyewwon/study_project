@@ -2,9 +2,16 @@ package com.test.testproject.testproject.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestMethod;\
 
@@ -27,7 +34,27 @@ public class HelloController {
         LOGGER.error("Error Log");
         // 로그  설정을 <root level="INFO"> 로 설정 했기 때문에 그 밑의 trace와 debug는 기록되지 않음
     }
+
+    @PostMapping("/exception")
+    public void exceptionTest() throws Exception{
+        throw new Exception();
+    }
+    @ExceptionHandler(value = Exception.class) // 우선순위 처리로  @RestControllerAdvice 보다 Controller에서 따로 설정한 곳에서 예외처리 됨
+    public ResponseEntity<Map<String, String>> ExceptionHandler(Exception e){
+        HttpHeaders responseHeaders = new HttpHeaders();
+//        responseHeaders.add(HttpHeaders.CONTENT_TYPE, "application/json");
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+
+        LOGGER.info("Controller 내 ExceptionHandler 호출");
+        Map<String, String> map = new HashMap<>();
+        map.put("error type", httpStatus.getReasonPhrase());
+        map.put("code", "400");
+        map.put("message", "에러발생");
+
+        return new ResponseEntity<>(map, responseHeaders, httpStatus);
+    }
 }
+
 
 /*
 @RestController

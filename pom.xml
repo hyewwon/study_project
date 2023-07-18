@@ -28,6 +28,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId> <!--유효성 검증 의존성-->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId> <!--spring-boot-starter-web : Spring MVC를 이용한 rest 서비스를 개발하는데 사용-->
             <exclusions>
                 <exclusion>
