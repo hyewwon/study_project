@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
-
+import org.slf4j.Logger;
 @RestController
 @RequestMapping("/api/v1/post-api")
 public class PostController {
+
     @PostMapping(value = "/member")
     public String postMember(@RequestBody Map<String, Object> postData){
         StringBuilder sb = new StringBuilder();

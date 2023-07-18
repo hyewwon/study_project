@@ -1,9 +1,12 @@
 package com.test.testproject.testproject.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 //import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
+//import org.springframework.web.bind.annotation.RequestMethod;\
 
 @RestController
 public class HelloController {
@@ -11,6 +14,18 @@ public class HelloController {
     @GetMapping("/hello")
     public String hello(){
         return "Hello World";
+    }
+
+    private final Logger LOGGER = LoggerFactory.getLogger(HelloController.class);
+
+    @PostMapping("log-test")
+    public void logTest(){
+        LOGGER.trace("Trace Log");
+        LOGGER.debug("Debug Log");
+        LOGGER.info("Info Log");
+        LOGGER.warn("Warn Log");
+        LOGGER.error("Error Log");
+        // 로그  설정을 <root level="INFO"> 로 설정 했기 때문에 그 밑의 trace와 debug는 기록되지 않음
     }
 }
 
