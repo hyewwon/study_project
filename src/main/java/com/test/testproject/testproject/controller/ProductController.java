@@ -1,8 +1,11 @@
 package com.test.testproject.testproject.controller;
 
+import com.test.testproject.testproject.common.Constants;
+import com.test.testproject.testproject.common.exception.TestProjectException;
 import com.test.testproject.testproject.data.dto.ProductDto;
 import com.test.testproject.testproject.service.ProductService;
 import jakarta.validation.Valid;
+import org.apache.tomcat.util.bcel.Const;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +67,9 @@ public class ProductController {
         return null;
     }
 
+    @PostMapping(value = "/product/exception")
+    public void exceptionTest() throws TestProjectException{
+        throw new TestProjectException(Constants.ExceptionClass.PRODUCT, HttpStatus.BAD_REQUEST, "의도한 에러가 발생");
+    }
 
 }
