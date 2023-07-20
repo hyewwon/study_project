@@ -69,7 +69,8 @@ public class ProductController {
 
     @PostMapping(value = "/product/exception")
     public void exceptionTest() throws TestProjectException{
-        throw new TestProjectException(Constants.ExceptionClass.PRODUCT, HttpStatus.BAD_REQUEST, "의도한 에러가 발생");
+//        throw new TestProjectException(Constants.ExceptionClass.PRODUCT, HttpStatus.BAD_REQUEST, "의도한 에러가 발생");
+        throw new TestProjectException(Constants.ExceptionClass.PRODUCT, HttpStatus.FORBIDDEN, "접근 불가 에러 발생");
     }
 
 }
