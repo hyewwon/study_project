@@ -47,4 +47,15 @@ Swagger ?
  */
 
 
+/*
+@RequestBody vs @ModelAttribute
+    @ModelAttribure :
+                    클라이언트가 보내는 HTTP 파라미터들을 특정 Java Object에 바인딩(맵핑) 하는 것
+                    modelattribute?name=req&age=1 같은 Query String 형태 혹은 요청 본문에 삽입되는 Form 형태의 데이터를 처리 --> 파라미터로 전달된 데이터 처리 혹은 form에서 넘어온 데이터 처리
+
+    @RequestBody :
+                   클라이언트가 보내는 HTTP 요청 본문(JSON 및 XML 등)을 Java 오브젝트로 변환하는 것 --> request body를 통해 전달된 내용 처리 (ex) ajax의 post, put 요청에서 body에 담겨온 데이터 처리 )
+                   HTTP 요청 본문 데이터는 Spring에서 제공하는 HttpMessageConverter를 통해 타입에 맞는 객체로 변환
+ */
+
 
