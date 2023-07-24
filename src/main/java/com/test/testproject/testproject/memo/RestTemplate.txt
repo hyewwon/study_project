@@ -2,8 +2,9 @@ RestTemplate ?
     스프링에서 제공하는 HTTP 통신 기능을 쉽게 사용할 수 있게 설계되어 있는 템플릿
     HTTP 서버와의 통신을 단순화하고 RESTful 원칙을 지킴
     동기 방식으로 처리되며 비동기 방식으로는 AsyncRestTemplate이 있음
-    RestTemplate 클래스는 REST 서비스를 호출하도록 설계되어 HTTP 프로토콜의 메소드에 맞게 여러 메소드를 제공
-
+    RestTemplate 클래스는 REST 서비스를 호출하도록 설계되어 HTTP 프로토콜의 메소드에 맞게 여러 메소드를
+    Header, Content-Tpye등을 설정하여 외부 API 호출
+    Server to Server 통신에 사용
 
 대표 메소드
     GET

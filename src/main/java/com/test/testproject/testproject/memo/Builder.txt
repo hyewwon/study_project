@@ -1,0 +1,133 @@
+객체 생성 시 패턴
+    1. 생성자 패턴
+        각 생성자를 오버로딩해서 만듬
+        필수적으로 값이 있어야할 멤버변수를 위해 생성자에 매개변수를 넣음
+        선택적 인자를 받기 위해서는 추가적인 생성자를 만들어야함 --> 인자들이 많아질수록 생성자가 많아짐
+        매개변수의 어떤 위치에 어떤타입과 값을 넣어줘야하는지 개발자가 알고있어야하고, 가독성도 떨어짐
+
+        ex)
+        public class Member {
+
+            private String nickname; //필수
+            private String password; //필수
+            private Gender gender; //선택
+
+            public Member(String nickname) {
+                this.nickname = nickname;
+            }
+
+            public Member(String nickname, String password) {
+                this.nickname = nickname;
+                this.password = password;
+            }
+
+            public Member(String nickname, String password, Gender gender) {
+                this.nickname = nickname;
+                this.password = password;
+                this.gender = gender;
+            }
+        }
+        Member member = new Member("minji", "123", F);
+
+    2. 자바빈 패턴
+        getter/setter를 이용하여 객체를 생성할때 필드를 주입하는 방식
+        코드량이 늘어나는 단점
+        setter 메소드를 통해서 값이 계속 변할 수 있음 --> 객체 일관성이 깨짐
+
+        ex)
+        public class Member {
+
+            private String nickname;
+            private String password;
+            private Gender gender;
+
+            public Member() {
+            }
+
+            public void setNickname(String nickname) {
+                this.nickname = nickname;
+            }
+
+            public void setPassword(String password) {
+                this.password = password;
+            }
+
+            public void setGender(Gender gender) {
+                this.gender = gender;
+            }
+        }
+
+    2. Builder 패턴
+        생성자 패턴과 자바빈 패턴의 단점을 보완
+        정보들은 자바빈즈패턴처럼 받되, 데이터 일관성을 위해 정보들을 다 받은 후에 객체를 생성
+        장점
+            - 불필요한 생성자의 제거
+
+            - 데이터의 순서에 상관없이 객체생성 가능
+
+            - 명시적 선언으로 이해하기가 쉽고 각 인자가 어떤 의미인지 알기 쉬움.(가독성)
+
+            - setter 메서드가 없으므로 변경 불가능한 객체 생성 가능.(객체불변성)
+
+            - 한번에 객체를 생성하므로 객체 일관성이 있음
+
+            - build() 함수가 null인지 체크해주므로 검증이 가능한다. (안그러면 set하지않은 객체에대해 get을 하게되는경우 nullPointerExcetpion발생 등등의 문제가 생김)
+
+        ex)
+        public class Member {
+
+            private String nickname; //필수
+            private String password; //필수
+            private Gender gender; //선택
+
+            public static class Builder {
+                private final String nickname;
+                private final String password;
+                private Gender gender;
+
+                // 필수변수는 생성자로 값을 넣는다.
+                public Builder(String nickname, String password) {
+                    this.nickname = nickname;
+                    this.password = password;
+                }
+
+                // 멤버변수별 메소드: 빌더클래스의 필드값을 set하고 빌더객체를 리턴한다.
+                public Builder gender(Gender gender) {
+                    this.gender = gender;
+                    return this;
+                }
+
+                // 빌더메소드
+                public Member build() {
+                    return new Member(this);
+                }
+            }
+
+            public Member(Builder builder) {
+                this.nickname = builder.nickname;
+                this.password = builder.password;
+                this.gender = builder.gender;
+            }
+        }
+
+        Member memberEntity = new Builder("minji", "1234")
+                        .gender(Gender.F)
+                        .build();
+
+        lombok 버전
+            import lombok.Builder;
+
+            @Builder
+            public class Member {
+                private String nickname;
+                private String password;
+                private Gender gender;
+            }
+
+            public static void main(String[] args) {
+                    Member memberEntity = Member.builder()
+                            .nickname("minji")
+                            .password("123")
+                            .gender(Gender.F)
+                            .build();
+            }

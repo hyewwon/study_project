@@ -1,0 +1,23 @@
+ResponseEntity?
+    RestAPI 사용시 서버간의 통신에 필요한 정보를 제공해야 하기 때문에 적절한 상태코드와 응답 헤더 및 본문을 생성해서 전달해야함
+        ---> 따라서 HTTP 응답을 제어할 수 있는 ResponseEntity 사용(Status Code 직접 지정 가능)
+    @ResponseBody와 다르게 어노테이션이 아닌 객체로 사용
+    HttpEntity를 상속받음
+    구성 : HttpStatus, HttpHeaders, HttpBody
+
+        * HttpEntity 클래스 : HTTP Request 또는 HTTP Response에 해당하는 Httpheader와 HttpBody를 포함하는 클래스
+
+    * @ResponseBody : HTTP 규격에 맞는 응답을 만들어주기 위한 어노테이션
+                    HTTP 요청을 객체로 변환하거나 객체를 응답으로 변환하는 HttpMessageConverter 사용
+                    사용은 간단하지만 HTTP Header에 대해서 유연하게 설정 할 수 없음 ---> ResponseEntity 사용
+
+    * 사용시 생성자보다는 Builder 활용 권장
+        ex )
+            생성자
+                return new ResponseEntity<TestDTO>(testdto, headers, HttpStatus.valueOf(200));
+
+            builder
+                return ResponseEntity.ok()
+                    .headers(headers)
+                    .body(testdto)
+                    .build();
