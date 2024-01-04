@@ -29,6 +29,8 @@
         2. 양방향 / 다대일
         주인이 아닌 객체에 @OneToMany를 달아주어 양방향 매핑
         주인이 아닌 객체에 mappedBy 속성을 통해서 관계의 주인이 상대편임을 명시
+        ex ) @OneToMany(mappedBy = 주인 객체변수명)
+            private List<주인 class> examples  = new ArrayList<>();
 
     @OneToMany
     @ManyToMany
