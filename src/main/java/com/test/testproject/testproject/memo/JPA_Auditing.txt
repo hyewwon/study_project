@@ -1,0 +1,22 @@
+Auditing?
+    Spring Data JPA에서 Auditing이라는 기능 제공
+    엔티티가 생성되고 변경되는 시점을 감지하여 생성시각, 수정시각, 생성한 사람 ,수정한 사람을 기록 가능
+
+@EnableJPAAuditing
+    이 어노테이션을 Application 클래스에 붙이거나 @Configuration 어노테이션이 사용된 클레스에 붙이면 Auditing 활성화
+
+EntityListener?
+    Entity가 삽입, 삭제, 수정, 조회 작업을 할 때 전, 후에 어떠한 작업을 하기 위해 이벤트 처리를 위한 어노테이션
+    Auditing을 적용할 엔티티 클래스에 @EntityListeners 어노테이션 적용
+    --> @EntityListeners(AuditingEntityListener.class)
+    * AuditingEntityListener : Spring Data JPA에서 제공하는 이벤트 리스너, 엔티티의 영속, 수정 이벤트 감지하는 역할
+
+
+    @PrePersist : Persist(Insert) 메서드가 호출되기 전에 실행되는 메서드
+    @PreUpdate : Merge(Update) 메서드가 호출되기 전에 실행되는 메서드
+    @PreRemove : Remove(Delete) 메서드가 호출 되기 전에 실행되는 메서드
+    @PostPersist : Persist(Insert) 메서드가 호출된 후에 실행되는 메서드
+    @PostUpdate : Merge(Update) 메서드가 호출된 후에 실행되는 메서드
+    @PostRemove : Remove(Delete) 메서드가 호출된 후에 실행되는 메서드
+    @PostLoad : Select 조회가 실해된 직후에 실행되는 메서드
+
