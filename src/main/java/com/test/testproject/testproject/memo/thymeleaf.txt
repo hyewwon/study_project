@@ -1,0 +1,6 @@
+thymeleaf?
+    spring 기반 화면 구현의 기술 템플릿 엔진
+
+    1. 의존성 추가
+    2. properties or yaml 설정 추가
+    3. html 상단에 <html xmlns:th=http://www.thymeleaf.org> 추가
