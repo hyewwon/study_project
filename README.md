@@ -3,7 +3,7 @@
 
 ### 개발 환경
 - BackEnd : Java, Spring boot
-- ORM : Maria DB
+- ORM : MySQL
 - IDE : IntelliJ
 
 
